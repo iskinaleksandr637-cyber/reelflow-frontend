@@ -178,10 +178,20 @@ function App() {
 
     loadMySubs(id)
 
-    //Deep-link: ссылка на чужой профиль
-    const sp = tg?.initDataUnsafe?.start_param
+    // Deep-link: ссылка на чужой профиль
+    let sp = tg?.initDataUnsafe?.start_param
+    
+    // Fallback: пробуем из URL (для тестирования в браузере)
+    if (!sp) {
+      sp = new URLSearchParams(window.location.search).get('startapp')
+    }
+    
+    console.log('[ReelFlow] start_param:', sp)
+    console.log('[ReelFlow] user id:', id)
+    
     if (sp && /^u\d+$/.test(sp)) {
       const target = sp.slice(1)
+      console.log('[ReelFlow] opening profile:', target)
       if (target !== id) {
         setProfileId(target)
         loadProfile(target)
