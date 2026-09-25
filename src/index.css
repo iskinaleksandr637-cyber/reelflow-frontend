@@ -1,0 +1,256 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  -webkit-tap-highlight-color: transparent;
+}
+
+:root {
+  --bg: var(--tg-theme-bg-color, #0a0a0a);
+  --card: var(--tg-theme-secondary-bg-color, #161616);
+  --border: var(--tg-theme-secondary-bg-color, #242424);
+  --text: var(--tg-theme-text-color, #ffffff);
+  --hint: var(--tg-theme-hint-color, #8a8a8a);
+  --accent: var(--tg-theme-button-color, #3390ec);
+  --accent-text: var(--tg-theme-button-text-color, #ffffff);
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  min-height: 100vh;
+}
+
+.app {
+  max-width: 520px;
+  margin: 0 auto;
+  padding-bottom: 90px;
+}
+
+/* Шапка */
+.topbar {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px;
+  background: var(--bg);
+  border-bottom: 1px solid var(--border);
+}
+
+.topbar-left {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.topbar h1 {
+  font-size: 20px;
+  letter-spacing: -0.5px;
+}
+
+.subtitle {
+  font-size: 12px;
+  color: var(--hint);
+}
+
+.avatar-sm {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #7c4dff, #3390ec);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 16px;
+  color: #fff;
+  flex-shrink: 0;
+}
+
+.avatar-img {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  object-fit: cover;
+  flex-shrink: 0;
+  border: 2px solid var(--border);
+}
+
+/* Лента */
+.feed {
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.loader {
+  text-align: center;
+  color: var(--hint);
+  padding: 40px;
+}
+
+/* Пустое состояние */
+.empty {
+  text-align: center;
+  padding: 60px 24px;
+}
+
+.empty-icon {
+  font-size: 56px;
+  margin-bottom: 16px;
+}
+
+.empty h2 {
+  margin-bottom: 8px;
+}
+
+.empty p {
+  color: var(--hint);
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+/* Карточка */
+.card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 24px;
+  overflow: hidden;
+}
+
+.card-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 14px 16px;
+}
+
+.card-header-text {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.card-header-text strong {
+  font-size: 14px;
+}
+
+.card-header-text span {
+  font-size: 12px;
+  color: var(--hint);
+}
+
+.badge {
+  font-size: 11px;
+  font-weight: 700;
+  padding: 4px 10px;
+  border-radius: 20px;
+}
+
+.badge.instagram {
+  background: rgba(225, 48, 108, 0.15);
+  color: #e1306c;
+}
+
+.badge.tiktok {
+  background: rgba(0, 242, 234, 0.12);
+  color: #00f2ea;
+}
+
+/* Превью видео */
+.video-box {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 9 / 12;
+  background: linear-gradient(160deg, #1a1a2e, #000);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  cursor: pointer;
+}
+
+.play-btn {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(8px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 22px;
+  color: #fff;
+  padding-left: 4px;
+}
+
+.video-hint {
+  font-size: 13px;
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.video-emoji {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  font-size: 18px;
+  background: rgba(0, 0, 0, 0.5);
+  padding: 6px 8px;
+  border-radius: 10px;
+}
+
+/* Кнопки карточки */
+.card-actions {
+  display: flex;
+  gap: 10px;
+  padding: 12px 16px;
+  border-top: 1px solid var(--border);
+}
+
+.btn {
+  border: none;
+  border-radius: 12px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  padding: 12px;
+}
+
+.btn-open {
+  flex: 1;
+  background: var(--accent);
+  color: var(--accent-text);
+}
+
+.btn-del {
+  width: 48px;
+  background: rgba(255, 69, 58, 0.12);
+  color: #ff453a;
+  font-size: 16px;
+}
+
+.btn:active {
+  opacity: 0.7;
+}
+
+/* Подсказка внизу */
+.hint-pill {
+  position: fixed;
+  bottom: 16px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--card);
+  border: 1px solid var(--border);
+  color: var(--hint);
+  font-size: 13px;
+  padding: 10px 20px;
+  border-radius: 24px;
+  white-space: nowrap;
+}
