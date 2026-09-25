@@ -25,7 +25,7 @@ body {
 .app {
   max-width: 520px;
   margin: 0 auto;
-  padding-bottom: 90px;
+  padding-bottom: 80px;
 }
 
 /* Шапка */
@@ -72,8 +72,6 @@ body {
 }
 
 .avatar-img {
-  width: 38px;
-  height: 38px;
   border-radius: 50%;
   object-fit: cover;
   flex-shrink: 0;
@@ -85,7 +83,7 @@ body {
   padding: 16px;
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  gap: 16px;
 }
 
 .loader {
@@ -97,16 +95,17 @@ body {
 /* Пустое состояние */
 .empty {
   text-align: center;
-  padding: 60px 24px;
+  padding: 48px 24px;
 }
 
 .empty-icon {
-  font-size: 56px;
-  margin-bottom: 16px;
+  font-size: 52px;
+  margin-bottom: 14px;
 }
 
 .empty h2 {
   margin-bottom: 8px;
+  font-size: 18px;
 }
 
 .empty p {
@@ -240,17 +239,173 @@ body {
   opacity: 0.7;
 }
 
-/* Подсказка внизу */
-.hint-pill {
+/* Нижняя навигация */
+.bottom-nav {
   position: fixed;
-  bottom: 16px;
-  left: 50%;
-  transform: translateX(-50%);
+  bottom: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  background: var(--card);
+  border-top: 1px solid var(--border);
+  padding: 8px 8px calc(8px + env(safe-area-inset-bottom));
+  z-index: 20;
+}
+
+.nav-btn {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+  background: none;
+  border: none;
+  color: var(--hint);
+  font-size: 11px;
+  font-weight: 600;
+  padding: 6px 0;
+  cursor: pointer;
+}
+
+.nav-btn .nav-ico {
+  font-size: 20px;
+  opacity: 0.6;
+}
+
+.nav-btn.active {
+  color: var(--accent);
+}
+
+.nav-btn.active .nav-ico {
+  opacity: 1;
+}
+
+/* Люди */
+.people-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.person-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
   background: var(--card);
   border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 12px 14px;
+  cursor: pointer;
+}
+
+.person-info {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.person-name {
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.person-meta {
+  font-size: 12px;
   color: var(--hint);
-  font-size: 13px;
-  padding: 10px 20px;
-  border-radius: 24px;
-  white-space: nowrap;
+}
+
+.sub-btn {
+  border: none;
+  border-radius: 10px;
+  padding: 8px 14px;
+  font-size: 15px;
+  font-weight: 700;
+  cursor: pointer;
+  background: var(--accent);
+  color: var(--accent-text);
+}
+
+.sub-btn.subscribed {
+  background: rgba(255, 255, 255, 0.08);
+  color: var(--hint);
+}
+
+/* Профиль */
+.back-btn {
+  background: none;
+  border: none;
+  color: var(--accent);
+  font-size: 15px;
+  font-weight: 600;
+  padding: 14px 16px 0;
+  cursor: pointer;
+}
+
+.profile-head {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  padding: 20px 16px 8px;
+  text-align: center;
+}
+
+.profile-name {
+  font-size: 22px;
+  font-weight: 700;
+}
+
+.profile-username {
+  color: var(--hint);
+  font-size: 14px;
+}
+
+.profile-stats {
+  display: flex;
+  gap: 28px;
+  margin-top: 8px;
+}
+
+.pstat {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.pstat b {
+  font-size: 16px;
+}
+
+.pstat span {
+  font-size: 11px;
+  color: var(--hint);
+}
+
+.profile-actions {
+  padding: 12px 16px;
+  display: flex;
+  gap: 10px;
+}
+
+.my-actions {
+  display: flex;
+  gap: 10px;
+}
+
+.big-btn {
+  flex: 1;
+  border: none;
+  border-radius: 14px;
+  padding: 13px;
+  font-size: 15px;
+  font-weight: 700;
+  cursor: pointer;
+  background: var(--accent);
+  color: var(--accent-text);
+}
+
+.big-btn.secondary {
+  background: rgba(255, 255, 255, 0.08);
+  color: var(--text);
 }
