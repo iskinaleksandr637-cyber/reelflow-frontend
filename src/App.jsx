@@ -178,10 +178,18 @@ function App() {
 
     loadMySubs(id)
 
-    // Deep-link: ссылка на чужой профиль
+    // === ПРОВЕРЯЕМ ПАРАМЕТР ПРОФИЛЯ ИЗ URL ===
+    // Это работает когда бот отправляет кнопку с web_app URL
+    const profileParam = new URLSearchParams(window.location.search).get('profileId')
+    if (profileParam) {
+      console.log('[ReelFlow] profileId from URL:', profileParam)
+      setProfileId(profileParam)
+      loadProfile(profileParam)
+      return
+    }
+
+    // Fallback: проверяем start_param из Telegram (на всякий случай)
     let sp = tg?.initDataUnsafe?.start_param
-    
-    // Fallback: пробуем из URL (для тестирования в браузере)
     if (!sp) {
       sp = new URLSearchParams(window.location.search).get('startapp')
     }
@@ -191,7 +199,7 @@ function App() {
     
     if (sp && /^u\d+$/.test(sp)) {
       const target = sp.slice(1)
-      console.log('[ReelFlow] opening profile:', target)
+      console.log('[ReelFlow] opening profile via start_param:', target)
       if (target !== id) {
         setProfileId(target)
         loadProfile(target)
