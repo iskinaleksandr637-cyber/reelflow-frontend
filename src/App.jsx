@@ -178,28 +178,22 @@ function App() {
 
     loadMySubs(id)
 
-    // === ПРОВЕРЯЕМ ПАРАМЕТР ПРОФИЛЯ ИЗ URL ===
-    // Это работает когда бот отправляет кнопку с web_app URL
+    // === ПАРАМЕТР ПРОФИЛЯ ИЗ URL (кнопка web_app от бота) ===
     const profileParam = new URLSearchParams(window.location.search).get('profileId')
     if (profileParam) {
-      console.log('[ReelFlow] profileId from URL:', profileParam)
       setProfileId(profileParam)
       loadProfile(profileParam)
       return
     }
 
-    // Fallback: проверяем start_param из Telegram (на всякий случай)
+    // === DEEP-LINK через короткое имя приложения (t.me/bot/reelflow?startapp=uID) ===
     let sp = tg?.initDataUnsafe?.start_param
     if (!sp) {
       sp = new URLSearchParams(window.location.search).get('startapp')
     }
-    
-    console.log('[ReelFlow] start_param:', sp)
-    console.log('[ReelFlow] user id:', id)
-    
+
     if (sp && /^u\d+$/.test(sp)) {
       const target = sp.slice(1)
-      console.log('[ReelFlow] opening profile via start_param:', target)
       if (target !== id) {
         setProfileId(target)
         loadProfile(target)
@@ -255,7 +249,7 @@ function App() {
   }
 
   const shareProfile = async () => {
-    const link = `https://t.me/${BOT_USERNAME}?startapp=u${userId}`
+    const link = `https://t.me/${BOT_USERNAME}/reelflow?startapp=u${userId}`
     try {
       await navigator.clipboard.writeText(link)
       if (tg) tg.showAlert('Ссылка на профиль скопирована! Отправь её друзьям 😉')
